@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Doctor</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header class="header">
+    <h1>Hospital Management System</h1>
+    <p>Doctor Management</p>
+</header>
+
+<main class="container">
+
+    <h2>Add New Doctor</h2>
+
+    <form method="POST" onsubmit="return validateDoctorForm()">
+
+        <label>Doctor Name</label>
+        <input type="text" name="name" required>
+
+        <br><br>
+
+        <label>Specialization</label>
+        <input type="text" name="specialization" required>
+
+        <br><br>
+
+        <label>Phone</label>
+        <input type="tel" name="phone" required>
+
+        <br><br>
+
+        <label>Email</label>
+        <input type="email" name="email">
+
+        <br><br>
+
+        <label>Experience (Years)</label>
+        <input type="number" name="experience" min="0">
+
+        <br><br>
+
+        <button type="submit">Add Doctor</button>
+
+        <a href="/dashboard" class="btn">Cancel</a>
+
+    </form>
+
+</main>
+<script>
+function validateDoctorForm() {
+
+    let name = document.querySelector('input[name="name"]').value.trim();
+    let phone = document.querySelector('input[name="phone"]').value.trim();
+    let experience = document.querySelector('input[name="experience"]').value;
+
+    if (name.length < 2) {
+        alert("Please enter a valid doctor name.");
+        return false;
+    }
+
+    if (!/^[0-9]{10}$/.test(phone)) {
+        alert("Please enter a valid 10-digit phone number.");
+        return false;
+    }
+
+    if (experience < 0 || experience > 60) {
+        alert("Experience must be between 0 and 60 years.");
+        return false;
+    }
+
+    return true;
+}
+</script>
+</body>
+</html>

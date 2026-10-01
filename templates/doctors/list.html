@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Doctors</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header class="header">
+    <h1>Hospital Management System</h1>
+    <p>Doctor Management</p>
+</header>
+
+<main class="container">
+
+    <h2>Doctor List</h2>
+
+    <a href="/doctors/add" class="btn">+ Add New Doctor</a>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Specialization</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Experience</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for doctor in doctors %}
+
+            <tr>
+                <td>{{ doctor.doctor_id }}</td>
+                <td>{{ doctor.name }}</td>
+                <td>{{ doctor.specialization }}</td>
+                <td>{{ doctor.phone }}</td>
+                <td>{{ doctor.email }}</td>
+                <td>{{ doctor.experience }} years</td>
+
+                <td>
+                    <a href="/doctors/edit/{{ doctor.doctor_id }}">
+                        Edit
+                    </a>
+
+                    <a href="/doctors/delete/{{ doctor.doctor_id }}"
+                       onclick="return confirm('Are you sure you want to delete this doctor?')">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    <br>
+
+    <a href="/dashboard" class="btn">← Back to Dashboard</a>
+
+</main>
+
+</body>
+</html>

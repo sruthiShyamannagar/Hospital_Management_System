@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Appointment</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header class="header">
+    <h1>Hospital Management System</h1>
+    <p>Appointment Management</p>
+</header>
+
+<main class="container">
+
+    <h2>Book New Appointment</h2>
+
+    <form method="POST" onsubmit="return validateAppointmentForm()">
+
+        <label>Patient ID</label>
+        <input type="number" name="patient_id" min="1" required>
+
+        <br><br>
+
+        <label>Doctor ID</label>
+        <input type="number" name="doctor_id" min="1" required>
+
+        <br><br>
+
+        <label>Appointment Date</label>
+        <input type="date" name="appointment_date" required>
+
+        <br><br>
+
+        <label>Appointment Time</label>
+        <input type="time" name="appointment_time" required>
+
+        <br><br>
+
+        <label>Reason</label>
+        <textarea name="reason"></textarea>
+
+        <br><br>
+
+        <button type="submit">Book Appointment</button>
+
+        <a href="/dashboard" class="btn">Cancel</a>
+
+    </form>
+
+</main>
+<script>
+function validateAppointmentForm() {
+
+    let patientId = document.querySelector('input[name="patient_id"]').value;
+    let doctorId = document.querySelector('input[name="doctor_id"]').value;
+    let date = document.querySelector('input[name="appointment_date"]').value;
+    let time = document.querySelector('input[name="appointment_time"]').value;
+
+    if (patientId <= 0) {
+        alert("Please enter a valid Patient ID.");
+        return false;
+    }
+
+    if (doctorId <= 0) {
+        alert("Please enter a valid Doctor ID.");
+        return false;
+    }
+
+    if (date === "") {
+        alert("Please select an appointment date.");
+        return false;
+    }
+
+    if (time === "") {
+        alert("Please select an appointment time.");
+        return false;
+    }
+
+    return true;
+}
+</script>
+</body>
+</html>

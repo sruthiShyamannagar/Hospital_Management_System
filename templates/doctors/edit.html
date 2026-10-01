@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Doctor</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header class="header">
+    <h1>Hospital Management System</h1>
+    <p>Doctor Management</p>
+</header>
+
+<main class="container">
+
+    <h2>Edit Doctor</h2>
+
+    <form method="POST">
+
+        <label>Doctor Name</label>
+        <input type="text"
+               name="name"
+               value="{{ doctor.name }}"
+               required>
+
+        <br><br>
+
+        <label>Specialization</label>
+        <input type="text"
+               name="specialization"
+               value="{{ doctor.specialization }}"
+               required>
+
+        <br><br>
+
+        <label>Phone</label>
+        <input type="tel"
+               name="phone"
+               value="{{ doctor.phone }}"
+               required>
+
+        <br><br>
+
+        <label>Email</label>
+        <input type="email"
+               name="email"
+               value="{{ doctor.email }}">
+
+        <br><br>
+
+        <label>Experience (Years)</label>
+        <input type="number"
+               name="experience"
+               value="{{ doctor.experience }}"
+               min="0">
+
+        <br><br>
+
+        <button type="submit">Update Doctor</button>
+
+        <a href="/doctors" class="btn">Cancel</a>
+
+    </form>
+
+</main>
+
+</body>
+</html>

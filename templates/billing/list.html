@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Billing</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header class="header">
+    <h1>Hospital Management System</h1>
+    <p>Billing Management</p>
+</header>
+
+<main class="container">
+
+    <h2>Billing List</h2>
+
+    <a href="/billing/add" class="btn">
+        + Create New Bill
+    </a>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Bill ID</th>
+                <th>Patient ID</th>
+                <th>Consultation</th>
+                <th>Medicine</th>
+                <th>Room</th>
+                <th>Other</th>
+                <th>Total</th>
+                <th>Bill Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for bill in bills %}
+
+            <tr>
+                <td>{{ bill.bill_id }}</td>
+                <td>{{ bill.patient_id }}</td>
+                <td>₹{{ bill.consultation_fee }}</td>
+                <td>₹{{ bill.medicine_fee }}</td>
+                <td>₹{{ bill.room_charge }}</td>
+                <td>₹{{ bill.other_charges }}</td>
+                <td><strong>₹{{ bill.total_amount }}</strong></td>
+                <td>{{ bill.bill_date }}</td>
+                <td>
+                <a href="/billing/edit/{{ bill.bill_id }}">
+                Edit
+                </a>
+
+                <a href="/billing/delete/{{ bill.bill_id }}"
+                onclick="return confirm('Are you sure you want to delete this bill?')">
+                Delete
+                </a>
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    <br>
+
+    <a href="/dashboard" class="btn">
+        ← Back to Dashboard
+    </a>
+
+</main>
+
+</body>
+</html>

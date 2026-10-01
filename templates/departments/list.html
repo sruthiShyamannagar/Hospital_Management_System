@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Departments</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header class="header">
+    <h1>Hospital Management System</h1>
+    <p>Department Management</p>
+</header>
+
+<main class="container">
+
+    <h2>Department List</h2>
+
+    <a href="/departments/add" class="btn">
+        + Add New Department
+    </a>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Department Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for department in departments %}
+
+            <tr>
+
+                <td>{{ department.department_id }}</td>
+
+                <td>{{ department.department_name }}</td>
+
+                <td>{{ department.description }}</td>
+
+                <td>
+
+                    <a href="/departments/edit/{{ department.department_id }}">
+                        Edit
+                    </a>
+
+                    <a href="/departments/delete/{{ department.department_id }}"
+                       onclick="return confirm('Are you sure you want to delete this department?')">
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    <br>
+
+    <a href="/dashboard" class="btn">
+        ← Back to Dashboard
+    </a>
+
+</main>
+
+</body>
+</html>

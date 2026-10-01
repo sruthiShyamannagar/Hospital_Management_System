@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Bill</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header class="header">
+    <h1>Hospital Management System</h1>
+    <p>Billing Management</p>
+</header>
+
+<main class="container">
+
+    <h2>Edit Bill</h2>
+
+    <form method="POST">
+
+        <label>Patient ID</label>
+        <input type="number"
+               name="patient_id"
+               value="{{ bill.patient_id }}"
+               min="1"
+               required>
+
+        <br><br>
+
+        <label>Consultation Fee</label>
+        <input type="number"
+               name="consultation_fee"
+               value="{{ bill.consultation_fee }}"
+               min="0"
+               step="0.01">
+
+        <br><br>
+
+        <label>Medicine Fee</label>
+        <input type="number"
+               name="medicine_fee"
+               value="{{ bill.medicine_fee }}"
+               min="0"
+               step="0.01">
+
+        <br><br>
+
+        <label>Room Charge</label>
+        <input type="number"
+               name="room_charge"
+               value="{{ bill.room_charge }}"
+               min="0"
+               step="0.01">
+
+        <br><br>
+
+        <label>Other Charges</label>
+        <input type="number"
+               name="other_charges"
+               value="{{ bill.other_charges }}"
+               min="0"
+               step="0.01">
+
+        <br><br>
+
+        <label>Bill Date</label>
+        <input type="date"
+               name="bill_date"
+               value="{{ bill.bill_date }}"
+               required>
+
+        <br><br>
+
+        <button type="submit">Update Bill</button>
+
+        <a href="/billing" class="btn">Cancel</a>
+
+    </form>
+
+</main>
+
+</body>
+</html>

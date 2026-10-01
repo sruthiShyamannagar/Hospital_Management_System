@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Appointment</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header class="header">
+    <h1>Hospital Management System</h1>
+    <p>Appointment Management</p>
+</header>
+
+<main class="container">
+
+    <h2>Edit Appointment</h2>
+
+    <form method="POST">
+
+        <label>Patient ID</label>
+        <input type="number"
+               name="patient_id"
+               value="{{ appointment.patient_id }}"
+               min="1"
+               required>
+
+        <br><br>
+
+        <label>Doctor ID</label>
+        <input type="number"
+               name="doctor_id"
+               value="{{ appointment.doctor_id }}"
+               min="1"
+               required>
+
+        <br><br>
+
+        <label>Appointment Date</label>
+        <input type="date"
+               name="appointment_date"
+               value="{{ appointment.appointment_date }}"
+               required>
+
+        <br><br>
+
+        <label>Appointment Time</label>
+        <input type="time"
+               name="appointment_time"
+               value="{{ appointment.appointment_time }}"
+               required>
+
+        <br><br>
+
+        <label>Reason</label>
+        <textarea name="reason">{{ appointment.reason }}</textarea>
+
+        <br><br>
+
+        <label>Status</label>
+        <select name="status">
+
+            <option value="Scheduled"
+                {% if appointment.status == "Scheduled" %}selected{% endif %}>
+                Scheduled
+            </option>
+
+            <option value="Completed"
+                {% if appointment.status == "Completed" %}selected{% endif %}>
+                Completed
+            </option>
+
+            <option value="Cancelled"
+                {% if appointment.status == "Cancelled" %}selected{% endif %}>
+                Cancelled
+            </option>
+
+        </select>
+
+        <br><br>
+
+        <button type="submit">Update Appointment</button>
+
+        <a href="/appointments" class="btn">Cancel</a>
+
+    </form>
+
+</main>
+
+</body>
+</html>

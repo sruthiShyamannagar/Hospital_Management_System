@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Bill</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header class="header">
+    <h1>Hospital Management System</h1>
+    <p>Billing Management</p>
+</header>
+
+<main class="container">
+
+    <h2>Create New Bill</h2>
+
+    <form method="POST" onsubmit="return validateBillingForm()">
+
+        <label>Patient ID</label>
+        <input type="number" name="patient_id" min="1" required>
+
+        <br><br>
+
+        <label>Consultation Fee</label>
+        <input type="number" name="consultation_fee"
+               min="0" step="0.01" value="0">
+
+        <br><br>
+
+        <label>Medicine Fee</label>
+        <input type="number" name="medicine_fee"
+               min="0" step="0.01" value="0">
+
+        <br><br>
+
+        <label>Room Charge</label>
+        <input type="number" name="room_charge"
+               min="0" step="0.01" value="0">
+
+        <br><br>
+
+        <label>Other Charges</label>
+        <input type="number" name="other_charges"
+               min="0" step="0.01" value="0">
+
+        <br><br>
+
+        <label>Bill Date</label>
+        <input type="date" name="bill_date" required>
+
+        <br><br>
+
+        <button type="submit">Create Bill</button>
+
+        <a href="/dashboard" class="btn">Cancel</a>
+
+    </form>
+
+</main>
+<script>
+function validateBillingForm() {
+
+    let patientId = document.querySelector('input[name="patient_id"]').value;
+    let consultation = parseFloat(document.querySelector('input[name="consultation_fee"]').value) || 0;
+    let medicine = parseFloat(document.querySelector('input[name="medicine_fee"]').value) || 0;
+    let room = parseFloat(document.querySelector('input[name="room_charge"]').value) || 0;
+    let other = parseFloat(document.querySelector('input[name="other_charges"]').value) || 0;
+    let date = document.querySelector('input[name="bill_date"]').value;
+
+    if (patientId <= 0) {
+        alert("Please enter a valid Patient ID.");
+        return false;
+    }
+
+    if (consultation < 0 || medicine < 0 || room < 0 || other < 0) {
+        alert("Charges cannot be negative.");
+        return false;
+    }
+
+    if (date === "") {
+        alert("Please select a bill date.");
+        return false;
+    }
+
+    return true;
+}
+</script>
+</body>
+</html>
