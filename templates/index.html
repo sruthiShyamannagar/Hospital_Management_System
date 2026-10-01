@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,23 +11,59 @@
 
 <body>
 
-    <h1>Hospital Management System</h1>
+    <!-- HEADER -->
+    <div class="header">
+        <h1>Hospital Management System</h1>
+        <p>Welcome to the Hospital Management System</p>
+    </div>
 
-    <h2>Welcome!</h2>
+    <!-- MAIN CONTENT -->
+    <div class="container">
 
-    <p>Manage patients, doctors, appointments and billing.</p>
+        <h2>Welcome!</h2>
 
-    <hr>
+        <p>Manage patients, doctors, appointments and billing.</p>
 
-    <h3>Hospital Modules</h3>
+        <div class="dashboard">
 
-    <ul>
-        <li>Patient Management</li>
-        <li>Doctor Management</li>
-        <li>Appointment Management</li>
-        <li>Department Management</li>
-        <li>Billing Management</li>
-    </ul>
+            <div class="card">
+                <h3>Patient Management</h3>
+                <p>Manage patient records</p>
+                <a href="/patients">View Patients</a>
+            </div>
+
+            <div class="card">
+                <h3>Doctor Management</h3>
+                <p>Manage doctor records</p>
+                <a href="/doctors">View Doctors</a>
+            </div>
+
+            <div class="card">
+                <h3>Appointment Management</h3>
+                <p>Manage appointments</p>
+                <a href="/appointments">View Appointments</a>
+            </div>
+
+            <div class="card">
+                <h3>Department Management</h3>
+                <p>Manage hospital departments</p>
+                <a href="/departments">View Departments</a>
+            </div>
+
+            <div class="card">
+                <h3>Billing Management</h3>
+                <p>Manage patient billing</p>
+                <a href="/billing">View Billing</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>© 2026 Hospital Management System</p>
+    </div>
 
 </body>
 </html>
