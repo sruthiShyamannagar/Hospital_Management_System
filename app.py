@@ -89,6 +89,7 @@ def add_patient():
 
 @app.route("/patients")
 def patients():
+    db.ping(reconnect=True, attempts=3, delay=2)
     cursor = db.cursor(dictionary=True)
 
     cursor.execute("SELECT * FROM patients ORDER BY patient_id DESC")
