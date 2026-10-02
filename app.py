@@ -8,12 +8,23 @@ app = Flask(__name__)
 load_dotenv(override=True)
 
 # MySQL connection
-db = mysql.connector.connect(
-    host=os.getenv("DB_HOST"),
-    user=os.getenv("DB_USER"),
-    password=os.getenv("DB_PASSWORD"),
-    database=os.getenv("DB_NAME")
-)
+def get_db():
+    return mysql.connector.connect(
+        host=os.getenv("DB_HOST"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        database=os.getenv("DB_NAME")
+    )
+
+db = get_db()
+
+@app.before_request
+def reconnect_db():
+    global db
+    try:
+        db.ping(reconnect=True, attempts=3, delay=2)
+    except:
+        db = get_db()
 
 @app.route("/")
 def home():
@@ -89,7 +100,6 @@ def add_patient():
 
 @app.route("/patients")
 def patients():
-    db.ping(reconnect=True, attempts=3, delay=2)
     cursor = db.cursor(dictionary=True)
 
     cursor.execute("SELECT * FROM patients ORDER BY patient_id DESC")
