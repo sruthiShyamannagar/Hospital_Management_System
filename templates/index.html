@@ -4,66 +4,316 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
 
     <title>Hospital Management System</title>
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <div class="header">
-        <h1>Hospital Management System</h1>
-        <p>Welcome to the Hospital Management System</p>
-    </div>
+    <!-- TOP HEADER -->
+    <header class="admin-header">
 
-    <!-- MAIN CONTENT -->
-    <div class="container">
+        <div class="brand">
+            <div class="brand-icon">✚</div>
 
-        <h2>Welcome!</h2>
-
-        <p>Manage patients, doctors, appointments and billing.</p>
-
-        <div class="dashboard">
-
-            <div class="card">
-                <h3>Patient Management</h3>
-                <p>Manage patient records</p>
-                <a href="/patients">View Patients</a>
+            <div>
+                <h1>Hospital Management</h1>
+                <span>Healthcare Administration System</span>
             </div>
-
-            <div class="card">
-                <h3>Doctor Management</h3>
-                <p>Manage doctor records</p>
-                <a href="/doctors">View Doctors</a>
-            </div>
-
-            <div class="card">
-                <h3>Appointment Management</h3>
-                <p>Manage appointments</p>
-                <a href="/appointments">View Appointments</a>
-            </div>
-
-            <div class="card">
-                <h3>Department Management</h3>
-                <p>Manage hospital departments</p>
-                <a href="/departments">View Departments</a>
-            </div>
-
-            <div class="card">
-                <h3>Billing Management</h3>
-                <p>Manage patient billing</p>
-                <a href="/billing">View Billing</a>
-            </div>
-
         </div>
 
+        <a href="/dashboard" class="dashboard-btn">
+            Dashboard
+        </a>
+
+    </header>
+
+
+    <!-- MAIN LAYOUT -->
+    <div class="admin-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="sidebar-title">
+                MAIN MENU
+            </div>
+
+            <a href="/" class="sidebar-link active">
+                <span>⌂</span>
+                Home
+            </a>
+
+            <a href="/patients" class="sidebar-link">
+                <span>♙</span>
+                Patients
+            </a>
+
+            <a href="/doctors" class="sidebar-link">
+                <span>⚕</span>
+                Doctors
+            </a>
+
+            <a href="/appointments" class="sidebar-link">
+                <span>▣</span>
+                Appointments
+            </a>
+
+            <a href="/departments" class="sidebar-link">
+                <span>▦</span>
+                Departments
+            </a>
+
+            <a href="/billing" class="sidebar-link">
+                <span>▤</span>
+                Billing
+            </a>
+
+            <div class="sidebar-bottom">
+                <div class="admin-mini">
+                    <div class="admin-avatar">A</div>
+
+                    <div>
+                        <strong>Administrator</strong>
+                        <small>Hospital Admin</small>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- PAGE HEADING -->
+            <div class="welcome-section">
+
+                <div>
+                    <span class="page-label">OVERVIEW</span>
+
+                    <h2>Welcome back 👋</h2>
+
+                    <p>
+                        Manage your hospital operations from one place.
+                    </p>
+                </div>
+
+                <a href="/dashboard" class="main-dashboard-btn">
+                    Open Dashboard →
+                </a>
+
+            </div>
+
+
+            <!-- MANAGEMENT CARDS -->
+            <div class="management-grid">
+
+                <!-- PATIENTS -->
+                <div class="management-card">
+
+                    <div class="management-icon patient-icon">
+                        ♙
+                    </div>
+
+                    <div class="management-content">
+
+                        <span class="card-label">
+                            PATIENT CARE
+                        </span>
+
+                        <h3>Patients</h3>
+
+                        <p>
+                            Manage patient records, details and medical information.
+                        </p>
+
+                        <a href="/patients">
+                            View Patients →
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DOCTORS -->
+                <div class="management-card">
+
+                    <div class="management-icon doctor-icon">
+                        ⚕
+                    </div>
+
+                    <div class="management-content">
+
+                        <span class="card-label">
+                            MEDICAL STAFF
+                        </span>
+
+                        <h3>Doctors</h3>
+
+                        <p>
+                            Manage doctors, specializations and professional details.
+                        </p>
+
+                        <a href="/doctors">
+                            View Doctors →
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- APPOINTMENTS -->
+                <div class="management-card">
+
+                    <div class="management-icon appointment-icon">
+                        ▣
+                    </div>
+
+                    <div class="management-content">
+
+                        <span class="card-label">
+                            SCHEDULE
+                        </span>
+
+                        <h3>Appointments</h3>
+
+                        <p>
+                            Schedule and manage patient-doctor appointments.
+                        </p>
+
+                        <a href="/appointments">
+                            View Appointments →
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DEPARTMENTS -->
+                <div class="management-card">
+
+                    <div class="management-icon department-icon">
+                        ▦
+                    </div>
+
+                    <div class="management-content">
+
+                        <span class="card-label">
+                            HOSPITAL UNITS
+                        </span>
+
+                        <h3>Departments</h3>
+
+                        <p>
+                            Manage hospital departments and their information.
+                        </p>
+
+                        <a href="/departments">
+                            View Departments →
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BILLING -->
+                <div class="management-card">
+
+                    <div class="management-icon billing-icon">
+                        ₹
+                    </div>
+
+                    <div class="management-content">
+
+                        <span class="card-label">
+                            FINANCE
+                        </span>
+
+                        <h3>Billing</h3>
+
+                        <p>
+                            Manage patient billing, charges and payment records.
+                        </p>
+
+                        <a href="/billing">
+                            View Billing →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+            <section class="quick-section">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="page-label">QUICK ACCESS</span>
+                        <h3>Quick Actions</h3>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+
+                    <a href="/patients/add" class="quick-action">
+                        <span>＋</span>
+                        <div>
+                            <strong>Add Patient</strong>
+                            <small>Create patient record</small>
+                        </div>
+                    </a>
+
+                    <a href="/doctors/add" class="quick-action">
+                        <span>＋</span>
+                        <div>
+                            <strong>Add Doctor</strong>
+                            <small>Register doctor</small>
+                        </div>
+                    </a>
+
+                    <a href="/appointments/add" class="quick-action">
+                        <span>＋</span>
+                        <div>
+                            <strong>New Appointment</strong>
+                            <small>Schedule appointment</small>
+                        </div>
+                    </a>
+
+                    <a href="/billing/add" class="quick-action">
+                        <span>＋</span>
+                        <div>
+                            <strong>Create Bill</strong>
+                            <small>Add billing record</small>
+                        </div>
+                    </a>
+
+                </div>
+
+            </section>
+
+        </main>
+
     </div>
 
+
     <!-- FOOTER -->
-    <div class="footer">
-        <p>© 2026 Hospital Management System</p>
-    </div>
+    <footer class="footer">
+        <p>
+            © 2026 Hospital Management System
+            <span>•</span>
+            Healthcare Administration Portal
+        </p>
+    </footer>
 
 </body>
 </html>
