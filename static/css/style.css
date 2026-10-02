@@ -1,5 +1,6 @@
 /* =========================================================
-   HOSPITAL MANAGEMENT SYSTEM — MODERN UI
+   HOSPITAL MANAGEMENT SYSTEM
+   PROFESSIONAL ADMIN UI
    ========================================================= */
 
 * {
@@ -9,23 +10,36 @@
 }
 
 :root {
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --secondary: #0ea5e9;
-    --dark: #0f172a;
-    --text: #334155;
-    --muted: #64748b;
-    --light: #f8fafc;
-    --border: #e2e8f0;
-    --white: #ffffff;
+    --primary: #1769aa;
+    --primary-dark: #0d4f82;
+    --secondary: #20a4c7;
+
+    --dark: #172b4d;
+    --text: #344563;
+    --muted: #718096;
+
+    --background: #f4f7fb;
+    --surface: #ffffff;
+    --surface-soft: #f8fafc;
+
+    --border: #e5eaf1;
+
     --success: #16a34a;
-    --warning: #f59e0b;
-    --danger: #ef4444;
+    --warning: #d97706;
+    --danger: #dc2626;
+
+    --shadow-sm: 0 2px 8px rgba(23, 43, 77, 0.05);
+    --shadow-md: 0 8px 24px rgba(23, 43, 77, 0.08);
+    --shadow-lg: 0 16px 40px rgba(23, 43, 77, 0.12);
+
+    --radius: 14px;
 }
 
+/* ================= BODY ================= */
+
 body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #f1f5f9;
+    font-family: "Segoe UI", Inter, Arial, sans-serif;
+    background: var(--background);
     color: var(--text);
     line-height: 1.6;
     min-height: 100vh;
@@ -34,39 +48,58 @@ body {
 /* ================= HEADER ================= */
 
 .header {
-    background: linear-gradient(135deg, #0f4c81, #2563eb, #0ea5e9);
-    color: white;
-    padding: 28px 6%;
-    box-shadow: 0 8px 25px rgba(15, 76, 129, 0.2);
     position: relative;
+    background: linear-gradient(
+        120deg,
+        #0d4775 0%,
+        #1769aa 55%,
+        #168caf 100%
+    );
+
+    color: white;
+    padding: 26px 6%;
+    box-shadow: 0 4px 18px rgba(13, 71, 117, 0.18);
     overflow: hidden;
+}
+
+.header::before {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    right: -90px;
+    top: -140px;
+    border: 45px solid rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
 }
 
 .header::after {
     content: "";
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 150px;
+    height: 150px;
+    right: 150px;
+    bottom: -120px;
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-    right: -100px;
-    top: -150px;
 }
 
 .header h1 {
-    font-size: 30px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
     position: relative;
-    z-index: 1;
+    z-index: 2;
+
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
 }
 
 .header p {
-    margin-top: 5px;
-    font-size: 15px;
-    opacity: 0.9;
     position: relative;
-    z-index: 1;
+    z-index: 2;
+
+    margin-top: 4px;
+    font-size: 14px;
+    opacity: 0.88;
 }
 
 /* ================= CONTAINER ================= */
@@ -74,51 +107,71 @@ body {
 .container {
     width: 90%;
     max-width: 1350px;
-    margin: 38px auto;
+    margin: 35px auto 60px;
 }
 
 .container h2 {
-    color: var(--dark);
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 25px;
     position: relative;
-    padding-left: 15px;
+
+    color: var(--dark);
+    font-size: 26px;
+    font-weight: 700;
+
+    margin-bottom: 25px;
+    padding-left: 16px;
 }
 
 .container h2::before {
     content: "";
+
     position: absolute;
     left: 0;
-    top: 5px;
-    width: 5px;
-    height: 28px;
-    border-radius: 5px;
-    background: linear-gradient(var(--primary), var(--secondary));
+    top: 4px;
+
+    width: 4px;
+    height: 27px;
+
+    background: var(--primary);
+    border-radius: 10px;
 }
 
 /* ================= BUTTONS ================= */
 
 .btn,
 button {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    padding: 11px 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 10px 18px;
+
     border: none;
     border-radius: 9px;
+
+    background: var(--primary);
+    color: white;
+
     text-decoration: none;
     cursor: pointer;
+
     font-size: 14px;
     font-weight: 600;
-    transition: all 0.25s ease;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.18);
+
+    box-shadow: 0 3px 8px rgba(23, 105, 170, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .btn:hover,
 button:hover {
+    background: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.28);
+    box-shadow: 0 7px 16px rgba(23, 105, 170, 0.22);
 }
 
 .btn:active,
@@ -132,155 +185,246 @@ button:active {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 22px;
-    margin-top: 30px;
+    margin-top: 28px;
 }
 
+/* ================= CARDS ================= */
+
 .card {
-    background: var(--white);
-    padding: 28px 25px;
-    text-align: center;
-    border-radius: 18px;
-    border: 1px solid var(--border);
-    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
-    transition: all 0.3s ease;
     position: relative;
+
+    background: var(--surface);
+
+    padding: 28px 26px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow-sm);
+
     overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .card::before {
     content: "";
+
     position: absolute;
     left: 0;
     top: 0;
+
     width: 100%;
-    height: 5px;
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    height: 4px;
+
+    background: linear-gradient(
+        90deg,
+        var(--primary),
+        var(--secondary)
+    );
 }
 
 .card::after {
     content: "";
+
     position: absolute;
-    width: 90px;
-    height: 90px;
+
+    width: 100px;
+    height: 100px;
+
+    right: -45px;
+    bottom: -45px;
+
     border-radius: 50%;
-    background: rgba(37, 99, 235, 0.05);
-    right: -30px;
-    bottom: -35px;
+
+    background: rgba(23, 105, 170, 0.035);
 }
 
 .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 35px rgba(15, 23, 42, 0.11);
+    transform: translateY(-5px);
+
+    border-color: #d5e1ec;
+
+    box-shadow: var(--shadow-lg);
 }
 
 .card h3 {
-    margin-top: 8px;
-    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+
+    margin: 5px 0 5px;
+
     color: var(--dark);
-    font-size: 20px;
+
+    font-size: 18px;
+    font-weight: 650;
 }
 
 .card .count {
-    font-size: 42px;
-    font-weight: 800;
+    position: relative;
+    z-index: 1;
+
+    font-size: 38px;
+    line-height: 1.2;
+
+    font-weight: 750;
+
     color: var(--primary);
+
     margin: 8px 0;
 }
 
 .card p {
+    position: relative;
+    z-index: 1;
+
     color: var(--muted);
-    margin-bottom: 20px;
+
+    font-size: 14px;
+
+    margin-bottom: 18px;
 }
 
 .card a {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #eff6ff;
+    position: relative;
+    z-index: 2;
+
+    display: inline-flex;
+    align-items: center;
+
+    padding: 9px 15px;
+
+    background: #eef6fc;
     color: var(--primary);
+
     text-decoration: none;
+
     border-radius: 8px;
+
+    font-size: 13px;
     font-weight: 600;
-    transition: all 0.25s ease;
+
+    transition: all 0.2s ease;
 }
 
 .card a:hover {
     background: var(--primary);
     color: white;
-    transform: translateY(-2px);
+    transform: translateX(2px);
 }
 
 /* ================= TABLE ================= */
 
 table {
     width: 100%;
-    margin-top: 25px;
+
+    margin-top: 22px;
+
     border-collapse: separate;
     border-spacing: 0;
-    background: white;
-    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+
+    background: var(--surface);
+
     border: 1px solid var(--border);
-    border-radius: 14px;
+    border-radius: var(--radius);
+
     overflow: hidden;
+
+    box-shadow: var(--shadow-sm);
 }
 
+/* TABLE HEADER */
+
 th {
-    background: #eff6ff;
-    color: #1e40af;
-    padding: 16px;
+    background: #f7f9fc;
+
+    color: #526581;
+
+    padding: 15px 16px;
+
     text-align: left;
-    font-size: 13px;
+
+    font-size: 12px;
     font-weight: 700;
+
     text-transform: uppercase;
-    letter-spacing: 0.4px;
-    border-bottom: 1px solid #dbeafe;
+    letter-spacing: 0.6px;
+
+    border-bottom: 1px solid var(--border);
 }
+
+/* TABLE DATA */
 
 td {
     padding: 15px 16px;
-    border-bottom: 1px solid #edf2f7;
+
+    color: #46566f;
+
     font-size: 14px;
-    color: #475569;
+
+    border-bottom: 1px solid #edf1f5;
 }
 
 tbody tr {
-    transition: all 0.2s ease;
+    background: white;
+
+    transition:
+        background 0.18s ease,
+        box-shadow 0.18s ease;
 }
 
 tbody tr:hover {
-    background: #f8fbff;
+    background: #f8fbfe;
 }
 
 tbody tr:last-child td {
     border-bottom: none;
 }
 
-/* ================= ACTION BUTTONS ================= */
+/* ================= TABLE ACTIONS ================= */
 
 td a {
-    display: inline-block;
-    padding: 7px 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 55px;
+
+    padding: 6px 11px;
+
     margin-right: 5px;
-    border-radius: 7px;
+
+    border-radius: 6px;
+
     text-decoration: none;
+
     font-size: 12px;
     font-weight: 600;
+
     transition: all 0.2s ease;
 }
 
+/* EDIT */
+
 td a:first-child {
-    background: #fef3c7;
-    color: #b45309;
+    background: #fff7e6;
+    color: #b7791f;
 }
 
 td a:first-child:hover {
-    background: var(--warning);
+    background: #d97706;
     color: white;
     transform: translateY(-1px);
 }
 
+/* DELETE */
+
 td a:last-child {
-    background: #fee2e2;
-    color: #b91c1c;
+    background: #fff0f0;
+    color: #c53030;
 }
 
 td a:last-child:hover {
@@ -292,114 +436,150 @@ td a:last-child:hover {
 /* ================= FORMS ================= */
 
 form {
-    background: white;
-    padding: 35px;
-    max-width: 750px;
-    border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+    width: 100%;
+    max-width: 760px;
+
+    background: var(--surface);
+
+    padding: 32px;
+
     border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow-md);
 }
+
+/* LABEL */
 
 form label {
     display: block;
-    margin-top: 18px;
+
+    margin-top: 17px;
     margin-bottom: 7px;
-    font-weight: 600;
-    color: #334155;
-    font-size: 14px;
+
+    color: #344563;
+
+    font-size: 13px;
+    font-weight: 650;
 }
+
+/* INPUTS */
 
 form input,
 form select,
 form textarea {
     width: 100%;
-    padding: 13px 14px;
-    border: 1px solid #cbd5e1;
-    border-radius: 9px;
-    font-size: 14px;
+
+    padding: 12px 14px;
+
+    border: 1px solid #d5dce6;
+    border-radius: 8px;
+
+    background: #fbfcfe;
+
+    color: #26364f;
+
     font-family: inherit;
-    background: #f8fafc;
-    color: #1e293b;
-    transition: all 0.25s ease;
+    font-size: 14px;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 form input:hover,
 form select:hover,
 form textarea:hover {
-    border-color: #94a3b8;
+    border-color: #aebccc;
 }
 
 form input:focus,
 form select:focus,
 form textarea:focus {
     outline: none;
-    border-color: var(--primary);
+
     background: white;
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(23, 105, 170, 0.10);
 }
 
 form textarea {
-    min-height: 110px;
+    min-height: 120px;
     resize: vertical;
 }
+
+/* HIDE BR */
 
 form br {
     display: none;
 }
 
+/* FORM BUTTON */
+
 form button {
     margin-top: 25px;
-    min-width: 145px;
+    min-width: 140px;
 }
 
-/* ================= PLACEHOLDER ================= */
+/* PLACEHOLDER */
 
 form input::placeholder,
 form textarea::placeholder {
-    color: #94a3b8;
-}
-
-/* ================= FOOTER ================= */
-
-.footer {
-    text-align: center;
-    margin-top: 70px;
-    padding: 25px;
-    background: white;
-    border-top: 1px solid var(--border);
-    color: #64748b;
-    font-size: 14px;
+    color: #9aa7b8;
 }
 
 /* ================= BACK BUTTON ================= */
 
 .container > .btn:last-child {
-    margin-top: 15px;
+    margin-top: 18px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+    margin-top: 70px;
+
+    padding: 25px;
+
+    background: white;
+
+    border-top: 1px solid var(--border);
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 13px;
 }
 
 /* ================= SCROLLBAR ================= */
 
 ::-webkit-scrollbar {
-    width: 9px;
+    width: 8px;
+    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #e2e8f0;
+    background: #edf1f5;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #60a5fa;
+    background: #b7c5d4;
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--primary);
+    background: #7f94aa;
 }
 
 /* ================= SELECTION ================= */
 
 ::selection {
-    background: var(--primary);
+    background: #1769aa;
     color: white;
 }
 
@@ -421,43 +601,52 @@ form textarea::placeholder {
 @media (max-width: 650px) {
 
     .header {
-        padding: 25px 20px;
+        padding: 23px 20px;
     }
 
     .header h1 {
-        font-size: 24px;
+        font-size: 23px;
+    }
+
+    .header p {
+        font-size: 13px;
     }
 
     .container {
         width: 94%;
-        margin: 25px auto;
+        margin: 25px auto 45px;
     }
 
     .container h2 {
-        font-size: 23px;
+        font-size: 22px;
     }
 
     .dashboard {
         grid-template-columns: 1fr;
-        gap: 18px;
+        gap: 16px;
     }
 
     .card {
-        padding: 25px 20px;
+        padding: 24px 20px;
+    }
+
+    .card .count {
+        font-size: 34px;
     }
 
     form {
-        padding: 25px 20px;
+        padding: 24px 20px;
     }
 
     th,
     td {
-        padding: 11px;
+        padding: 11px 12px;
         font-size: 13px;
     }
 
     .btn,
     button {
-        padding: 10px 15px;
+        min-height: 40px;
+        padding: 9px 14px;
     }
 }
