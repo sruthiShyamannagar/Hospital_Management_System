@@ -540,6 +540,11 @@ def add_bill():
         )
 
         cursor.execute(query, values)
+        cursor.execute("SELECT DATABASE()")
+        print("CONNECTED DATABASE:", cursor.fetchone())
+
+        cursor.execute("DESCRIBE billing")
+        print("BILLING COLUMNS:", cursor.fetchall())
         db.commit()
         cursor.close()
 
