@@ -525,7 +525,7 @@ def add_bill():
         query = """
         INSERT INTO billing
         (patient_id, consultation_fee, medicine_fee,
-         room_charge, other_charges, total_amount, bill_date)
+         room_charge, other_charge, total_amount, bill_date)
         VALUES (%s, %s, %s, %s, %s, %s, %s)
         """
 
@@ -534,7 +534,7 @@ def add_bill():
             consultation_fee,
             medicine_fee,
             room_charge,
-            other_charges,
+            other_charge,
             total_amount,
             bill_date
         )
